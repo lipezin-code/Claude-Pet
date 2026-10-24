@@ -1,0 +1,15 @@
+/* Lista de projetos (mini chat e Configurações) */
+.pj-list { list-style: none; margin: 0; padding: 0; }
+.pj-item { display: flex; align-items: center; gap: var(--s1h); padding: var(--s1) var(--s1) var(--s1) var(--s2h); border-radius: var(--r-sm); }
+.pj-item:hover { background: var(--surface-3); }
+.pj-txt { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.pj-txt b { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pj-txt small { color: var(--text-mute); font-size: 11px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pj-empty { padding: var(--s2) var(--s2h); color: var(--text-mute); }
+.pj-note { display: block; padding: var(--s1h) var(--s2h) var(--s1); color: var(--text-mute); font-size: 11px; }
+.cx-pjmenu .ui-btn { margin: var(--s0) var(--s1h); }
+.pj-item.on { background: var(--surface-3); }
+.pj-list .pj-pick, .cx-menu .pj-list .pj-pick { display: flex; flex-direction: column; align-items: flex-start; gap: 0; flex: 1; min-width: 0; width: auto; padding: var(--s0) 0; border: 0; background: none; color: inherit; text-align: left; cursor: pointer; font: inherit; }
+.pj-list .pj-pick:hover { background: none; }
+.cx-menu .pj-item .ui-ibtn { width: auto; flex: none; padding: 0; justify-content: center; }
+.pj-pick:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: var(--r-sm); }

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "roxo",
+  "name": "Roxo",
+  "palette": {
+    "body": "#b455f2",
+    "shade": "#863cc1",
+    "eye": "#16101b",
+    "cheek": "#bb91f9",
+    "accent": "#ffd166"
+  },
+  "flags": {
+    "outline": false,
+    "eyeGlow": false,
+    "animatedColor": false
+  }
+}

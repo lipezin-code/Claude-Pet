@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "dark",
+  "name": "Dark",
+  "palette": {
+    "body": "#353b4a",
+    "shade": "#252b37",
+    "eye": "#f4f7ff",
+    "cheek": "#a0687e",
+    "accent": "#ffd166"
+  },
+  "flags": {
+    "outline": false,
+    "eyeGlow": true,
+    "animatedColor": false
+  }
+}

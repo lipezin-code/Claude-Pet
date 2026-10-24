@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "branco",
+  "name": "Branco",
+  "palette": {
+    "body": "#f4efe3",
+    "shade": "#bbb6ac",
+    "eye": "#292928",
+    "cheek": "#f2a8a0",
+    "accent": "#ffd166"
+  },
+  "flags": {
+    "outline": true,
+    "eyeGlow": false,
+    "animatedColor": false
+  }
+}

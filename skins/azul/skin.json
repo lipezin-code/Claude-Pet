@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "azul",
+  "name": "Azul",
+  "palette": {
+    "body": "#7c9cff",
+    "shade": "#5570c9",
+    "eye": "#10142a",
+    "cheek": "#ffb4d1",
+    "accent": "#ffd166"
+  },
+  "flags": {
+    "outline": false,
+    "eyeGlow": false,
+    "animatedColor": false
+  }
+}

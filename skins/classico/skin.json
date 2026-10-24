@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "classico",
+  "name": "Clássico",
+  "palette": {
+    "body": "#e8743b",
+    "shade": "#b5532a",
+    "eye": "#1d1410",
+    "cheek": "#f6a38b",
+    "accent": "#ffd166"
+  },
+  "flags": {
+    "outline": false,
+    "eyeGlow": false,
+    "animatedColor": false
+  }
+}

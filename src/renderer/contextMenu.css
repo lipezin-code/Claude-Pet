@@ -1,0 +1,19 @@
+/* Janela do menu: transparente; o card .ctx desenha tudo (margem p/ a sombra). */
+.ctx-wrap { padding: var(--s2h); }
+.ctx { padding: var(--s1); background: linear-gradient(180deg, var(--surface-2), var(--surface)); border-radius: var(--r-md); box-shadow: var(--shadow-menu), var(--inner-top); animation: ctx-in var(--t-fast) var(--ease); }
+@keyframes ctx-in { from { opacity: 0; transform: translateY(4px) scale(0.98); } }
+.ctx-item, .ctx-back { display: flex; width: 100%; align-items: center; gap: var(--s2h); padding: var(--s2) var(--s2h); border: 0; border-radius: var(--r-sm); background: none; color: var(--text); text-align: left; transition: background var(--t-fast) var(--ease); }
+.ctx-item:hover:not(:disabled), .ctx-back:hover { background: var(--surface-3); }
+.ctx-item:active:not(:disabled), .ctx-back:active { background: var(--press); }
+.ctx-item:disabled { cursor: default; }
+.ctx-item.info.title { color: var(--text); font-weight: 600; }
+.ctx-item.info { color: var(--text-mute); padding-top: 5px; padding-bottom: 5px; font-size: 12px; }
+.ctx-item.danger:hover { background: color-mix(in srgb, var(--st-err) 16%, transparent); color: var(--st-err); }
+.ctx-item .ic { width: 16px; display: grid; place-items: center; color: var(--text-dim); flex: none; }
+.ctx-item .lb { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ctx-item .lb small { display: block; color: var(--text-mute); font-size: 10px; overflow: hidden; text-overflow: ellipsis; }
+.ctx-item .end { color: var(--text-mute); flex: none; }
+.ctx-item .end.on { color: var(--accent); }
+.ctx-back { color: var(--text-dim); font-weight: 600; padding-left: var(--s1h); }
+.ctx hr { border: 0; border-top: 1px solid var(--border); margin: var(--s1) var(--s2); }
+html[data-view='menu'] body { background: transparent; }

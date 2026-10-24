@@ -1,0 +1,106 @@
+{
+  "name": "claude-pet",
+  "productName": "Claude Pet",
+  "version": "1.5.0",
+  "description": "Pet flutuante que acompanha o Claude Code no Windows",
+  "main": "out/main/index.js",
+  "author": "Fellipe",
+  "license": "MIT",
+  "scripts": {
+    "dev": "electron-vite dev",
+    "build": "electron-vite build",
+    "start": "electron-vite preview",
+    "typecheck": "tsc --noEmit",
+    "preview:ui": "vite --config scripts/vite.preview.config.mjs",
+    "test": "vitest run",
+    "gen:skins": "node scripts/generate-skins.mjs",
+    "preview:skins": "electron-vite build && electron scripts/skins-preview.mjs",
+    "dist": "electron-vite build && electron-builder --win nsis && node scripts/archive-releases.mjs"
+  },
+  "dependencies": {
+    "@anthropic-ai/claude-agent-sdk": "^0.3.308",
+    "@fontsource-variable/inter": "^5.3.0",
+    "lucide-react": "^1.61.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-markdown": "^10.1.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "electron": "^45.0.0",
+    "electron-builder": "^26.15.3",
+    "electron-vite": "^6.0.0",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.5",
+    "vitest": "^5.0.5"
+  },
+  "build": {
+    "appId": "com.fellipe.claudepet",
+    "productName": "Claude Pet",
+    "copyright": "Claude Pet",
+    "directories": {
+      "output": "release",
+      "buildResources": "build"
+    },
+    "files": [
+      "out/**",
+      "package.json",
+      "!node_modules/@anthropic-ai/claude-agent-sdk-*/**"
+    ],
+    "extraResources": [
+      {
+        "from": "build/icon.png",
+        "to": "icon.png"
+      },
+      {
+        "from": "build/tray.png",
+        "to": "tray.png"
+      },
+      {
+        "from": "hook/claude-pet-hook.cjs",
+        "to": "claude-pet-hook.cjs"
+      },
+      {
+        "from": "hook/claude-pet-statusline.cjs",
+        "to": "claude-pet-statusline.cjs"
+      },
+      {
+        "from": "team/lider.md",
+        "to": "lider.md"
+      },
+      {
+        "from": "skins",
+        "to": "skins",
+        "filter": [
+          "*/skin.json"
+        ]
+      }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Claude Pet",
+      "include": "build/installer.nsh",
+      "deleteAppDataOnUninstall": false,
+      "language": "1046"
+    }
+  }
+}

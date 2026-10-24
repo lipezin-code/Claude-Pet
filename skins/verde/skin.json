@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "verde",
+  "name": "Verde",
+  "palette": {
+    "body": "#52e08f",
+    "shade": "#3dab64",
+    "eye": "#18211b",
+    "cheek": "#b9ffbf",
+    "accent": "#ffd166"
+  },
+  "flags": {
+    "outline": false,
+    "eyeGlow": false,
+    "animatedColor": false
+  }
+}

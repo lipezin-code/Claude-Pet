@@ -1,0 +1,24 @@
+.sx-bar { display: flex; gap: var(--s3); align-items: center; padding: var(--s1) var(--s4) var(--s2); }
+.sx-bar .ui-select { flex: 1; min-width: 0; }
+.sx-hide { display: flex; align-items: center; gap: var(--s2); color: var(--text-mute); font-size: 11px; white-space: nowrap; }
+.sx-hide .ui-toggle { width: 34px; height: 20px; }
+.sx-hide .ui-toggle::after { width: 14px; height: 14px; }
+.sx-hide .ui-toggle[aria-checked='true']::after { transform: translateX(14px); }
+.sx-clean { display: flex; align-items: center; gap: var(--s2); padding: 0 var(--s4) var(--s2); }
+.sx-clean small { color: var(--text-mute); font-size: 11px; }
+.sx-clean .ui-btn { white-space: nowrap; flex: none; }
+
+.sx-list { flex: 1; overflow-y: auto; padding: var(--s1) var(--s4) var(--s4); }
+.sx-empty { color: var(--text-mute); text-align: center; margin: var(--s8) var(--s4); }
+.sx-warn { margin-bottom: var(--s3); padding: var(--s3); border-radius: var(--r-md); line-height: 1.5; color: var(--text-dim); border: 1px solid color-mix(in srgb, var(--st-ask) 50%, transparent); background: color-mix(in srgb, var(--st-ask) 9%, transparent); }
+
+.sx-card { padding: var(--s3) var(--s4); margin-bottom: var(--s3); display: flex; flex-direction: column; gap: var(--s1); transition: border-color var(--t-med) var(--ease); }
+.sx-card.watched { border-color: color-mix(in srgb, var(--accent) 60%, transparent); box-shadow: 0 0 0 3px var(--accent-soft), var(--shadow-card), var(--inner-top); }
+.sx-head { display: flex; align-items: center; justify-content: space-between; gap: var(--s2); border: 0; background: none; padding: 0; text-align: left; color: var(--text); }
+.sx-name { font-size: 15px; font-weight: 600; letter-spacing: -0.01em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: flex; align-items: center; gap: 5px; }
+.sx-path { color: var(--text-mute); font-size: 11px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.sx-meta { display: flex; justify-content: space-between; color: var(--text-dim); font-size: 11px; margin-top: var(--s0); }
+.sx-tool { display: inline-flex; align-items: center; gap: 5px; width: fit-content; font-size: 11px; color: var(--st-work); background: color-mix(in srgb, var(--st-work) 12%, transparent); padding: var(--s0) var(--s2); border-radius: var(--r-pill); }
+.sx-note { color: var(--text-mute); font-size: 11px; }
+.sx-actions { display: flex; gap: var(--s1h); margin-top: var(--s2); }
+.sx-log { margin-top: var(--s2); padding: var(--s2) var(--s3); background: var(--bg-0); border-radius: var(--r-sm); font: 11px/1.6 var(--mono); color: var(--text-dim); user-select: text; }

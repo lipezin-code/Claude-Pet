@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "dourado",
+  "name": "Dourado",
+  "palette": {
+    "body": "#f7c531",
+    "shade": "#c2930c",
+    "eye": "#252118",
+    "cheek": "#fff1a4",
+    "accent": "#ffd166"
+  },
+  "flags": {
+    "outline": false,
+    "eyeGlow": false,
+    "animatedColor": false
+  }
+}

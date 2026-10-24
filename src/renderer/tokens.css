@@ -1,0 +1,140 @@
+/* Design tokens do Claude Pet. Único lugar com cores/raios/sombras/tempos. */
+:root {
+  /* superfícies (azulado quase preto) */
+  --bg-0: #0b0d12;
+  --bg-1: #12151c;
+  --surface: #171b24;
+  --surface-2: #1d222d;
+  --surface-3: #262c39;
+  --press: #2e3544; /* fundo de item pressionado (um passo acima do hover) */
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.14);
+  --glow-top: rgba(255, 255, 255, 0.06);
+
+  /* texto */
+  --text: #eef0f5;
+  --text-dim: #a4abba;
+  --text-mute: #6f7787;
+
+  /* acento = laranja do mascote (PALETTES.crab.O) */
+  --accent: #e8743b;
+  --accent-hi: #f59a66;
+  --accent-fg: #1d1410;
+  --accent-soft: rgba(232, 116, 59, 0.16);
+  --cool: #4cc9f0; /* secundária: trabalhando */
+  --cool-2: #3b82f6;
+  --accent-glow: rgba(232, 116, 59, 0.35);
+  --accent-edge: #c95f2c; /* borda do botão de acento */
+  /* laranja vivo: anéis de uso + controles ligados (toggle, slider, seleção). Botões de acento seguem --accent */
+  --vivid: #ff6a1a;
+  --vivid-soft: rgba(255, 106, 26, 0.18);
+  --ring-ok: var(--vivid);
+  --ring-warn: #fbbf24;
+  --ring-crit: #ff3b30;
+
+  /* botões: relevo tátil (luz no topo, sombra curta embaixo, afunda no clique) */
+  --btn-top: #262c39; --btn-bot: #1b2029;
+  --btn-top-hover: #313948; --btn-bot-hover: #252b37;
+  --btn-edge: rgba(255, 255, 255, 0.09); --btn-edge-hover: rgba(255, 255, 255, 0.16);
+  --btn-hi: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  --btn-drop: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --btn-press: inset 0 1px 3px rgba(0, 0, 0, 0.45);
+  --accent-hi-line: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  --gold: #e0b341; /* líder da equipe / contador de agentes */
+  --gold-fg: #1d1410;
+  --knob: #fff; /* bolinha do toggle e do slider */
+  --code-bg: #0b0d11; /* bloco de código: escuro nos dois temas */
+  --code-fg: #e7e9ee;
+  --code-hdr: rgba(255, 255, 255, 0.04);
+
+  /* estados (consistentes em todo o app) */
+  --st-work: #4cc9f0;
+  --st-done: #4ade80;
+  --st-ask: #fbbf24;
+  --st-err: #f87171;
+  --st-off: #8b93a5;
+
+  /* forma */
+  --r-2xs: 5px;
+  --r-xs: 6px;
+  --r-sm: 10px;
+  --r-md: 16px;
+  --r-bubble: 18px;
+  --r-lg: 22px;
+  --r-pill: 999px;
+  --shadow-card: 0 12px 32px rgba(0, 0, 0, 0.45), 0 2px 8px rgba(0, 0, 0, 0.35);
+  --shadow-pop: 0 18px 44px rgba(0, 0, 0, 0.55), 0 3px 10px rgba(0, 0, 0, 0.4);
+  --inner-top: inset 0 1px 0 var(--glow-top);
+  /* menu: a janela só tem 10px de margem; sombra maior é cortada e vira um "quadrado" escuro */
+  --shadow-menu: 0 2px 8px rgba(0, 0, 0, 0.45), 0 0 1px rgba(0, 0, 0, 0.5);
+  --shadow-knob: 0 2px 6px rgba(0, 0, 0, 0.4);
+  --shadow-thumb: 0 3px 10px rgba(0, 0, 0, 0.45);
+  --shadow-raise: 0 2px 6px rgba(0, 0, 0, 0.3);
+  --shadow-well: inset 0 1px 3px rgba(0, 0, 0, 0.4);
+
+  /* movimento */
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --t-fast: 150ms;
+  --t-enter: 200ms;
+  --t-med: 200ms; /* teto de 200ms para interações */
+  --t-pulse: 1.6s;
+  --t-pulse-fast: 1s;
+  --t-stagger: 0.2s;
+
+  /* espaçamento (grade 4/8; s0/s1h/s2h = meios-passos já usados) */
+  --s0: 2px; --s1: 4px; --s1h: 6px; --s2: 8px; --s2h: 10px; --s3: 12px; --s4: 16px; --s5: 20px; --s6: 24px; --s8: 32px;
+
+  --font: 'Inter Variable', 'Segoe UI Variable', 'Segoe UI', system-ui, sans-serif;
+  --mono: 'Cascadia Mono', Consolas, monospace;
+
+  /* aliases legados (CSS antigo ainda usa estes nomes) */
+  --bg: var(--bg-0); --panel: var(--surface); --panel2: var(--surface-2); --line: var(--border);
+  --muted: var(--text-dim); --ok: var(--st-done); --warn: var(--st-ask); --err: var(--st-err); --info: var(--st-work);
+  --radius: var(--r-lg);
+
+  font-family: var(--font);
+  font-size: 13px;
+  color: var(--text);
+  color-scheme: dark;
+}
+
+:root[data-theme='light'] {
+  --bg-0: #f4f2ee;
+  --bg-1: #ffffff;
+  --surface: #ffffff;
+  --surface-2: #f1eee8;
+  --surface-3: #e6e2da;
+  --press: #dcd7cd;
+  --accent-edge: #bf5320;
+  --vivid: #f25a0e;
+  --vivid-soft: rgba(242, 90, 14, 0.14);
+  --ring-ok: var(--vivid);
+  --ring-warn: #f5a000; /* --st-ask claro é escuro p/ texto; anel não precisa (o número fica dentro) */
+  --ring-crit: #e5251b;
+  --btn-top: #ffffff; --btn-bot: #f4f1eb;
+  --btn-top-hover: #ffffff; --btn-bot-hover: #ebe7df;
+  --btn-edge: rgba(20, 22, 30, 0.12); --btn-edge-hover: rgba(20, 22, 30, 0.2);
+  --btn-hi: inset 0 1px 0 #ffffff;
+  --btn-drop: 0 1px 2px rgba(40, 30, 20, 0.1);
+  --btn-press: inset 0 1px 3px rgba(40, 30, 20, 0.18);
+  --shadow-well: inset 0 1px 2px rgba(40, 30, 20, 0.12);
+  --shadow-menu: 0 2px 8px rgba(40, 30, 20, 0.18), 0 0 1px rgba(40, 30, 20, 0.3);
+  --border: rgba(20, 22, 30, 0.1);
+  --border-strong: rgba(20, 22, 30, 0.18);
+  --glow-top: rgba(255, 255, 255, 0.9);
+  --text: #1c1f27;
+  --text-dim: #5a6170;
+  --text-mute: #868c99;
+  --accent: #d9632a;
+  --accent-hi: #e8743b;
+  --accent-fg: #ffffff;
+  --accent-soft: rgba(217, 99, 42, 0.12);
+  --st-work: #0a8fb8;
+  --st-done: #16a34a;
+  --st-ask: #b7791f;
+  --st-err: #dc2626;
+  --st-off: #7b8394;
+  --shadow-card: 0 10px 28px rgba(40, 30, 20, 0.14), 0 2px 6px rgba(40, 30, 20, 0.08);
+  --shadow-pop: 0 16px 40px rgba(40, 30, 20, 0.2), 0 3px 8px rgba(40, 30, 20, 0.1);
+  color-scheme: light;
+}

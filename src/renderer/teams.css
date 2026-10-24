@@ -1,0 +1,99 @@
+/* Janela Equipes: mesmos tokens do resto do app */
+.tm { height: 100%; display: flex; flex-direction: column; background: var(--bg); color: var(--text); user-select: text; }
+.tm-hdr { display: flex; align-items: center; gap: var(--s3); padding: var(--s4) var(--s5); border-bottom: 1px solid var(--border); color: var(--text-dim); }
+.tm-title { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: var(--s0); }
+.tm-demo { font-size: 11px; padding: var(--s0) var(--s2); border-radius: var(--r-pill); border: 1px dashed var(--border-strong); color: var(--text-mute); }
+.tm-count { font-size: 12px; }
+
+.tm-scroll { flex: 1; overflow: auto; padding: var(--s4) var(--s5); }
+.tm-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: var(--s4); align-content: start; }
+.tm-card { display: flex; gap: var(--s4); padding: var(--s4); border-left: 3px solid var(--st-off); }
+.tm-card.st-working { border-left-color: var(--st-work); }
+.tm-card.st-needs_you { border-left-color: var(--st-ask); }
+.tm-card.st-done, .tm-card.st-validated { border-left-color: var(--st-done); }
+.tm-card.st-stalled { border-left-color: var(--st-err); }
+/* líder: linha inteira no topo, borda dourada fixa (o estado aparece no chip) */
+.tm-card.lead { grid-column: 1 / -1; border-left-color: var(--gold); }
+.tm-pet { flex: none; box-sizing: border-box; align-self: center; }
+.tm-pet.off { opacity: .35; filter: grayscale(.6); }
+
+.tm-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: var(--s2); }
+.tm-head { display: flex; align-items: center; gap: var(--s2); flex-wrap: wrap; }
+.tm-name { flex: 1; display: inline-flex; align-items: center; gap: var(--s1h); font-size: 14px; font-weight: 600; }
+.tm-card.lead .tm-name { color: var(--gold); }
+.tm-meta { display: flex; justify-content: space-between; gap: var(--s2); font-size: 11px; color: var(--text-mute); flex-wrap: wrap; }
+.tm-term { display: inline-flex; align-items: center; gap: var(--s1); font-family: var(--mono); }
+
+/* campos editáveis no lugar: parecem texto até o foco */
+.tm-input { width: 100%; min-width: 0; font: inherit; color: inherit; background: transparent; border: 1px solid transparent; border-radius: var(--r-sm); padding: var(--s0) var(--s1h); margin-left: -7px; }
+.tm-input:hover { border-color: var(--border); }
+.tm-input:focus { outline: none; border-color: var(--accent); background: var(--surface); }
+.tm-input.bad { border-color: var(--st-err); }
+.tm-input::placeholder { color: var(--text-mute); font-style: italic; }
+.tm-tname { color: var(--text); font-size: 15px; font-weight: 600; }
+.tm-goal { font-size: 12px; color: var(--text-dim); }
+.tm-task { font-size: 13px; color: var(--text-dim); }
+.tm-actions { display: flex; align-items: center; gap: var(--s1h); }
+.tm-bind { flex: 1; min-width: 0; font-size: 12px; }
+.tm-subs { padding: 0 var(--s1h); border-radius: var(--r-pill); background: var(--surface-3); color: var(--text-dim); }
+
+/* seções: Agent Teams detectadas (só leitura) acima da equipe manual */
+.tm-at { margin-bottom: var(--s5); }
+.tm-sec { display: flex; align-items: center; gap: var(--s2); margin: 0 0 var(--s3); font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--text-mute); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tm-ended { text-transform: none; letter-spacing: 0; font-weight: 500; padding: 1px var(--s2); border-radius: var(--r-pill); background: var(--surface-3); color: var(--text-dim); }
+.tm-ro { padding: var(--s0) 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tm-card.st-unknown { border-left-color: var(--st-off); border-left-style: dashed; }
+.tm-sec .ui-btn { margin-left: auto; text-transform: none; letter-spacing: 0; }
+.tm-clean { display: flex; align-items: center; gap: var(--s3); margin-bottom: var(--s4); color: var(--text-mute); font-size: 11px; }
+
+/* abas: Agent Teams | Equipe manual */
+.tm-tabs { display: flex; align-items: center; gap: var(--s3); padding: var(--s3) var(--s5) 0; }
+.tm-tabs .ui-seg { min-width: 340px; }
+.tm-h { color: var(--text); font-size: 15px; font-weight: 600; }
+.tm-hint { margin: 0 0 var(--s3); font-size: 12px; color: var(--text-mute); }
+.tm-empty { display: flex; flex-direction: column; align-items: center; gap: var(--s1); margin: var(--s8) auto; text-align: center; color: var(--text-mute); font-size: 12px; }
+.tm-empty b { color: var(--text); font-size: 14px; font-weight: 600; margin-bottom: var(--s1); }
+
+/* editor "Montar equipe" */
+.tm-roster { padding: var(--s4); margin-bottom: var(--s4); display: flex; flex-direction: column; gap: var(--s2); }
+.tm-rhead { display: flex; align-items: center; gap: var(--s2); flex-wrap: wrap; }
+.tm-rhead b { font-size: 14px; margin-right: var(--s2); }
+.tm-muted { font-size: 11px; color: var(--text-mute); }
+.tm-rrow { display: grid; grid-template-columns: 170px 1fr 160px auto; gap: var(--s2); align-items: center; }
+.tm-slug { font: 12px var(--mono); color: var(--text-dim); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tm-slug.bad { color: var(--st-err); }
+.tm-err { flex: 1; font-size: 12px; color: var(--st-err); }
+
+/* Preparar projeto */
+.tm-grow { flex: 1; }
+.tm-proj { font: 12px var(--mono); color: var(--text-dim); padding: var(--s0) var(--s2); border-radius: var(--r-pill); background: var(--surface-2); border: 1px solid var(--border); max-width: 260px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tm-step { display: flex; align-items: center; gap: var(--s3); padding: var(--s2) 0; border-top: 1px solid var(--border); }
+.tm-stepdot { width: 18px; height: 18px; flex: none; border-radius: 50%; border: 1px solid var(--border-strong); display: grid; place-items: center; }
+.tm-step.ok .tm-stepdot { background: var(--st-done); border-color: var(--st-done); color: var(--bg-0); }
+.tm-steptxt { flex: 1; display: flex; flex-direction: column; gap: 1px; }
+.tm-steptxt b { font-size: 13px; font-weight: 500; }
+.tm-steptxt span { font-size: 11px; color: var(--text-mute); }
+.tm-diffbox { display: flex; flex-direction: column; gap: var(--s2); }
+.tm-diff { margin: 0; max-height: 260px; overflow: auto; padding: var(--s3); border-radius: var(--r-sm); background: var(--bg-0); border: 1px solid var(--border); font: 12px/1.45 var(--mono); white-space: pre; user-select: text; }
+.tm-diff .add { color: var(--st-done); }
+.tm-diff .del { color: var(--st-err); }
+.tm-msg { margin: 0; font-size: 12px; color: var(--text-dim); }
+.tm-hint code, .tm-task code { font: 12px var(--mono); color: var(--text-dim); }
+.tm-tasktxt { font-size: 12px; color: var(--text-dim); white-space: pre-wrap; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.tm-actions .ui-btn { white-space: nowrap; }
+/* botões do fluxo (copiar/enviar): linha própria, para não espremer a lista de sessões */
+.tm-flow { display: flex; gap: var(--s1h); flex-wrap: wrap; }
+.tm-del { font: 11px var(--mono); color: var(--st-ask); max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tm-card.st-delivered { border-left-color: var(--st-ask); }
+
+.tm-card.st-changes { border-left-color: var(--st-err); }
+.tm-card.st-approved, .tm-card.st-integrated { border-left-color: var(--st-done); }
+.tm-card.st-ready { border-left-color: var(--st-ask); }
+.tm-card.st-validating { border-left-color: var(--st-work); }
+
+/* painel "Como funciona" */
+.tm-help { font-size: 13px; color: var(--text-dim); line-height: 1.55; user-select: text; }
+.tm-help p { margin: 0; }
+.tm-help h4 { margin: var(--s2) 0 0; font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--text-mute); }
+.tm-help ol, .tm-help ul { margin: 0; padding-left: var(--s5); display: flex; flex-direction: column; gap: var(--s1); }
+.tm-help b { color: var(--text); font-weight: 600; }

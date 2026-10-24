@@ -1,0 +1,63 @@
+/* Mini chat (380x480). Janela transparente: o contêiner .cx desenha o card arredondado. */
+.cx { position: relative; height: 100%; display: flex; flex-direction: column; overflow: hidden; border-radius: var(--r-lg); border: 1px solid var(--border-strong); background: linear-gradient(180deg, var(--bg-1) 0%, var(--bg-0) 100%); box-shadow: var(--inner-top); }
+/* Sem backdrop-filter/acrylic: em janela Electron transparente ele não borra o que está atrás (testado) e prejudica a leitura. */
+
+.cx-hdr { display: flex; align-items: center; gap: var(--s3); padding: var(--s3) var(--s3) var(--s2) var(--s4); -webkit-app-region: drag; }
+.cx-avatar { width: 30px; height: 38px; flex: none; }
+.cx-title { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 3px; }
+.cx-title b { font-size: 15px; font-weight: 600; letter-spacing: -0.01em; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cx-sub { display: flex; align-items: center; gap: var(--s1h); max-width: 100%; min-width: 0; }
+.cx-sub .ui-chip { flex: none; }
+.cx-proj { font-weight: 400; color: var(--text-mute); font-size: 12px; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cx-actions { display: flex; gap: var(--s1h); -webkit-app-region: no-drag; }
+
+.cx-menu { position: absolute; right: var(--s3); top: 58px; z-index: 20; padding: var(--s1); min-width: 224px; box-shadow: var(--shadow-pop), var(--inner-top); animation: cx-pop var(--t-fast) var(--ease); }
+.cx-menu button { display: flex; width: 100%; align-items: center; gap: var(--s2h); padding: var(--s2) var(--s2h); border: 0; border-radius: var(--r-sm); background: none; color: var(--text); text-align: left; transition: background var(--t-fast) var(--ease); }
+.cx-menu button:hover:not(:disabled) { background: var(--surface-3); }
+.cx-menu button:active:not(:disabled) { background: var(--press); }
+.cx-menu button:disabled { color: var(--text-mute); cursor: default; }
+.cx-size { display: flex; align-items: center; gap: var(--s2); padding: var(--s1h) var(--s2) var(--s1h) var(--s2h); color: var(--text); }
+.cx-size span { flex: 1; }
+.cx-size b { min-width: 42px; text-align: center; font-weight: 600; font-variant-numeric: tabular-nums; }
+.cx-menu hr { border: 0; border-top: 1px solid var(--border); margin: var(--s1) 0; }
+@keyframes cx-pop { from { opacity: 0; transform: translateY(-4px) scale(0.98); } }
+
+.cx-tabs { padding: var(--s1) var(--s4) var(--s2); }
+.cx-bar { position: relative; display: flex; gap: var(--s2); align-items: center; padding: var(--s1) var(--s4) var(--s2); }
+.cx-bar .ui-select { flex: 1; min-width: 0; }
+.cx-bar .cx-conv { flex: 0 0 120px; } /* cabe "Nova conversa" inteiro */
+.cx-pick { text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; cursor: pointer; }
+.cx-pjmenu { top: calc(100% - 2px); left: var(--s4); right: var(--s4); max-height: 260px; overflow: hidden auto; }
+
+.cx-msgs { flex: 1; overflow-y: auto; padding: var(--s1) var(--s4) var(--s2); user-select: text; }
+.cx-msg { margin: var(--s3) 0; line-height: 1.55; font-size: 13px; }
+.cx-msg.user { margin-left: 36px; padding: 9px 14px; border-radius: var(--r-bubble) var(--r-bubble) var(--r-xs) var(--r-bubble); background: linear-gradient(180deg, var(--surface-3), var(--surface-2)); border: 1px solid var(--border); box-shadow: var(--inner-top); white-space: pre-wrap; word-break: break-word; }
+.cx-msg.assistant { padding-right: var(--s2); }
+.cx-msg.assistant p { margin: 0.35em 0; } .cx-msg.assistant ul, .cx-msg.assistant ol { padding-left: 1.3em; margin: 0.35em 0; }
+.cx-msg.assistant code { font-family: var(--mono); font-size: 12px; background: var(--surface-2); padding: 1px 5px; border-radius: var(--r-xs); }
+.cx-msg.error { padding: 9px 14px; border-radius: var(--r-md); background: color-mix(in srgb, var(--st-err) 12%, transparent); border: 1px solid color-mix(in srgb, var(--st-err) 45%, transparent); white-space: pre-wrap; }
+.cx-link { text-decoration: underline; text-decoration-color: var(--text-mute); }
+.cx-msgtools { display: flex; gap: var(--s1); margin-top: var(--s0); opacity: 0; transition: opacity var(--t-fast) var(--ease); }
+.cx-msg:hover .cx-msgtools { opacity: 1; }
+
+.cx-code { margin: var(--s2) 0; border-radius: var(--r-sm); overflow: hidden; border: 1px solid var(--border); background: var(--code-bg); }
+.cx-code-hdr { display: flex; align-items: center; justify-content: space-between; padding: var(--s1) var(--s2) var(--s1) var(--s3); background: var(--code-hdr); font-size: 11px; color: var(--text-mute); text-transform: lowercase; }
+.cx-code pre { margin: 0; padding: var(--s3); overflow-x: auto; font-size: 12px; color: var(--code-fg); }
+.cx-code pre code { background: none !important; padding: 0 !important; color: inherit; font-family: var(--mono); }
+
+.cx-empty { display: flex; flex-direction: column; align-items: center; gap: var(--s2); text-align: center; color: var(--text-dim); margin: var(--s6) var(--s4); line-height: 1.55; }
+.cx-empty b { color: var(--text); font-weight: 600; font-size: 14px; }
+.cx-empty span { color: var(--text-mute); font-size: 12px; }
+.cx-empty span + span { margin-top: calc(var(--s2) * -1); }
+.cx-model { margin-top: var(--s1); padding: 1px var(--s2); border-radius: var(--r-pill); background: var(--surface-2); border: 1px solid var(--border); color: var(--text-dim); font: 500 11px var(--font); text-transform: capitalize; }
+.cx-empty-pet { width: 64px; height: 80px; margin-bottom: var(--s2); }
+
+.cx-dots { display: flex; gap: 5px; padding: var(--s2) 0; }
+.cx-dots span { width: 6px; height: 6px; border-radius: 50%; background: var(--text-mute); animation: ui-pulse var(--t-pulse-fast) ease-in-out infinite; }
+.cx-dots span:nth-child(2) { animation-delay: var(--t-stagger); } .cx-dots span:nth-child(3) { animation-delay: calc(var(--t-stagger) * 2); }
+
+
+.cx-compose { display: flex; align-items: flex-end; gap: var(--s2); margin: var(--s1) var(--s3) var(--s3); padding: 5px 5px 5px var(--s4); border-radius: var(--r-lg); background: var(--bg-0); border: 1px solid var(--border); transition: border-color var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease); }
+.cx-compose:focus-within { border-color: color-mix(in srgb, var(--accent) 55%, transparent); box-shadow: 0 0 0 3px var(--accent-soft); }
+.cx-compose textarea { flex: 1; min-width: 0; resize: none; border: 0; outline: 0; background: transparent; color: var(--text); font: inherit; line-height: 1.45; padding: var(--s1h) 0; max-height: 110px; user-select: text; }
+.cx-compose textarea::placeholder { color: var(--text-mute); }

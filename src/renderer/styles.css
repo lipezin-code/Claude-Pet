@@ -1,0 +1,61 @@
+* { box-sizing: border-box; }
+html, body, #root { margin: 0; height: 100%; background: transparent; overflow: hidden; user-select: none; }
+html[data-view='settings'] body { background: var(--bg); }
+button { font: inherit; color: inherit; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+/* "Reduzir movimento" do app: corta transições e animações de UI (o pet já para via `animate`) */
+:root[data-still] *, :root[data-still] *::before, :root[data-still] *::after { transition: none !important; animation: none !important; }
+
+/* ---------- pet ---------- */
+.pet-root { width: 100%; height: 100%; }
+/* a janela tem 5 colunas extras à esquerda (LAPTOP_PAD) só p/ o notebook de lado; a área clicável é só o quadro do pet,
+   então a faixa fica transparente a cliques (o SVG desenha o notebook nela via overflow: visible) */
+.pet-hit { margin-left: calc(100% * 5 / 21); width: calc(100% * 16 / 21); height: 100%; touch-action: none; position: relative; }
+/* nº de agentes de equipe ativos: canto superior esquerdo do quadro, longe da placa/glifos (direita e centro) */
+.pet-agents { position: absolute; left: 4%; top: 4%; min-width: 1.4em; padding: 0 .3em; border-radius: var(--r-pill); font: 600 clamp(8px, 9vw, 13px)/1.4 var(--font); text-align: center; color: var(--gold-fg); background: var(--gold); opacity: .9; pointer-events: none; }
+/* IDLE: só o piscar (2 repaints a cada 4,6s). Sem respiração contínua => CPU ~0. */
+.sprite.anim .eyes-idle { animation: blink 4.6s steps(1) infinite; }
+.sprite.anim.st-COMPLETED .bodyfx { animation: jump .5s steps(2) infinite; }
+.sprite.anim.st-ERROR .bodyfx { animation: shiver .25s linear infinite; }
+.sprite.anim.drag .bodyfx { animation: dangle .35s ease-in-out infinite alternate; }
+.sprite.anim .pulse { animation: pulse 1.2s steps(2) infinite; }
+.sprite.anim .spin { animation: spin 1.2s steps(8) infinite; }
+.sprite.anim .wave { transform-box: fill-box; transform-origin: 50% 100%; animation: waveSign .7s ease-in-out infinite alternate; }
+.sprite.anim .float { animation: floatz 2.4s steps(1) infinite; }
+.sprite.anim .drip { animation: drip 1.4s steps(4) infinite; }
+.sprite:not(.anim) .bodyfx * { animation: none; }
+
+/* notebook: pegar/guardar em 3 quadros; mãos alternam a cada --type-ms (2 quadros); linhas da tela piscam */
+.sprite.anim .laptop.taking { animation: lapIn var(--move-ms, 250ms) steps(3, end) both; }
+.sprite.anim .laptop.stowing { animation: lapOut var(--move-ms, 250ms) steps(3, end) both; }
+.sprite.anim .laptop.typing .hand { animation: handUp calc(var(--type-ms, 150ms) * 2) steps(1, end) infinite; }
+.sprite.anim .laptop.typing .hr { animation-delay: calc(var(--type-ms, 150ms) * -1); }
+.sprite.anim .laptop.typing .l1 { animation: lineBlink calc(var(--type-ms, 150ms) * 5) steps(1, end) infinite; }
+.sprite.anim .laptop.typing .l2 { animation: lineBlink calc(var(--type-ms, 150ms) * 7) steps(1, end) infinite reverse; }
+@keyframes lapIn { from { transform: translateY(4px); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes lapOut { from { transform: none; opacity: 1; } to { transform: translateY(4px); opacity: 0; } }
+@keyframes handUp { 0% { transform: translateY(-1px); } 50% { transform: none; } }
+@keyframes lineBlink { 0% { opacity: 1; } 60% { opacity: .35; } }
+
+/* "?" e "!": entram com pulinho em passos (pixel nítido) e somem com fade; duração = --glyph-ms */
+.sprite.anim .glyph { animation: glyphFade var(--glyph-ms, 3s) linear both; }
+.sprite.anim .gbounce { animation: gbounce .6s steps(1, end) 1; }
+@keyframes glyphFade { 0% { opacity: 0; } 5% { opacity: 1; } 85% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes gbounce { 0% { transform: translateY(2px); } 15% { transform: translateY(-2px); } 35% { transform: none; } 50% { transform: translateY(-1px); } 65% { transform: none; } }
+
+/* skins: estas classes só existem quando a flag da skin está ligada (o Clássico nunca as usa) */
+.eyeglow { filter: drop-shadow(0 0 .6px rgba(244, 247, 255, .85)); }
+.sprite.anim .huecycle { animation: huecycle 6s steps(6) infinite; } /* 1 repaint/s, nunca contínuo */
+@keyframes huecycle { to { filter: hue-rotate(360deg); } }
+
+@keyframes blink { 0%, 94%, 100% { opacity: 1; } 95%, 98% { opacity: 0; } }
+@keyframes jump { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-1px); } }
+@keyframes shiver { 0%, 100% { transform: translateX(-.15px); } 50% { transform: translateX(.15px); } }
+@keyframes wiggle { 0%, 100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg); } }
+@keyframes dangle { from { transform: translateY(-.8px) rotate(-5deg); } to { transform: translateY(-.8px) rotate(5deg); } }
+@keyframes pulse { 50% { opacity: .35; } }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes waveSign { from { transform: rotate(-4deg); } to { transform: rotate(4deg); } }
+@keyframes floatz { 0%, 100% { transform: translateY(0); opacity: 1; } 50% { transform: translateY(-1px); opacity: .6; } }
+@keyframes drip { 0% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(2px); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .sprite .bodyfx, .sprite .bodyfx * { animation: none !important; } }

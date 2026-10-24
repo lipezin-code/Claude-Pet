@@ -1,0 +1,82 @@
+.st { display: flex; height: 100%; background: linear-gradient(180deg, var(--bg-1), var(--bg-0)); }
+.st-side { width: 196px; flex: none; display: flex; flex-direction: column; gap: var(--s0); padding: var(--s5) var(--s3); border-right: 1px solid var(--border); background: color-mix(in srgb, var(--bg-0) 60%, transparent); }
+.st-brand { display: flex; align-items: center; gap: var(--s2); padding: 0 var(--s2) var(--s4); font-size: 15px; letter-spacing: -0.01em; }
+.st-logo { width: 26px; height: 32px; }
+.st-side button { display: flex; align-items: center; gap: var(--s2h); padding: 9px var(--s3); border: 0; border-radius: var(--r-sm); background: none; color: var(--text-dim); text-align: left; font-weight: 500; transition: background var(--t-fast) var(--ease), color var(--t-fast) var(--ease); }
+.st-side button:hover { background: var(--surface-2); color: var(--text); }
+.st-side button.on { background: var(--surface-3); color: var(--text); box-shadow: var(--inner-top); }
+.st-side button.on svg { color: var(--vivid); }
+.st-side button:active { background: var(--press); }
+.st-ver { margin-top: auto; padding: var(--s2) var(--s3); color: var(--text-mute); font-size: 11px; }
+
+.st-pane { flex: 1; overflow-y: auto; padding: var(--s6) var(--s8) var(--s8); user-select: text; }
+.st-pane h2 { margin: 0 0 var(--s5); font-size: 22px; font-weight: 600; letter-spacing: -0.02em; }
+.st-pane h3 { margin: 0 0 var(--s2); font-size: 12px; font-weight: 500; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.04em; }
+.st-card { padding: var(--s2) var(--s5); margin-bottom: var(--s4); }
+.st-tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s3); margin-bottom: var(--s4); }
+.st-tiles .ui-tile .ic { align-items: flex-start; }
+
+.st-row { display: flex; align-items: center; justify-content: space-between; gap: var(--s5); padding: var(--s3) 0; border-bottom: 1px solid var(--border); }
+.st-row:last-child { border-bottom: 0; }
+.st-lbl { font-weight: 500; }
+.st-lbl small { display: block; margin-top: var(--s0); max-width: 300px; color: var(--text-mute); font-weight: 400; font-size: 11px; line-height: 1.45; word-break: break-word; }
+.st-ctl { display: flex; align-items: center; justify-content: flex-end; min-width: 0; text-align: right; }
+.st-inline { display: flex; gap: var(--s2); align-items: center; }
+.st-inline .ui-input { width: 170px; }
+/* campo + botão não encolhem (senão transbordam por cima do rótulo); o rótulo é que quebra linha */
+.st-ctl:has(.st-inline) { flex: none; }
+.st-row:has(.st-inline) .st-lbl { min-width: 0; overflow-wrap: anywhere; }
+.st-inline .ui-select { max-width: 170px; text-overflow: ellipsis; }
+.st-num { width: 80px; text-align: center; }
+.st-actions { display: flex; flex-wrap: wrap; gap: var(--s2); padding: var(--s3) 0; }
+.st-msg { margin: 0 0 var(--s3); color: var(--text-dim); line-height: 1.5; }
+.st-note { color: var(--text-mute); font-size: 11px; line-height: 1.5; margin: var(--s2) 0 0; }
+.st-muted { color: var(--text-mute); font-size: 11px; display: block; }
+.st-ok { color: var(--st-done); } .st-bad { color: var(--st-err); }
+.st-warn { padding: var(--s3) var(--s4); margin-bottom: var(--s4); border-radius: var(--r-md); line-height: 1.55; color: var(--text-dim); border: 1px solid color-mix(in srgb, var(--st-ask) 45%, transparent); background: color-mix(in srgb, var(--st-ask) 8%, transparent); }
+.st-warn b { color: var(--text); }
+.st-pane code { font-family: var(--mono); font-size: 11px; background: var(--surface-2); padding: 1px 5px; border-radius: var(--r-2xs); }
+.st-log { max-height: 200px; overflow: auto; font: 11px/1.5 var(--mono); white-space: pre-wrap; color: var(--text-dim); user-select: text; }
+.st-sessions { max-height: 220px; overflow: auto; }
+.st-sessions > div { padding: var(--s0) var(--s1h); border-radius: var(--r-sm); cursor: context-menu; }
+.st-sessions > div:hover { background: var(--surface-3); }
+
+/* números grandes (como o "24°C" da referência) + slider */
+.st-big { display: flex; align-items: baseline; gap: var(--s1); padding-top: var(--s4); }
+.st-big .n { font-size: 44px; font-weight: 300; letter-spacing: -0.03em; line-height: 1; }
+.st-big .u { font-size: 16px; color: var(--text-dim); }
+.st-big .l { margin-left: var(--s3); color: var(--text-mute); font-size: 12px; }
+.st-gap { height: var(--s3); }
+.st-card .ui-slider { padding-bottom: var(--s3); }
+
+/* galeria de skins (mesmos tokens dos cards; borda de destaque = acento) */
+.st-skins { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: var(--s3); padding: var(--s2) 0 var(--s4); }
+.st-mcard { display: flex; flex-direction: column; align-items: center; gap: var(--s1h); padding: 11px 9px var(--s2h); border-radius: var(--r-md); border: 1px solid var(--border); background: var(--surface); box-shadow: var(--inner-top); transition: border-color var(--t-fast) var(--ease), background var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease), transform var(--t-fast) var(--ease); } /* borda 1px: +1px de padding mantém o tamanho */
+.st-mcard:hover { transform: translateY(-2px); border-color: var(--border-strong); background: var(--surface-2); }
+.st-mcard:active { transform: scale(0.97); }
+.st-skins.still .st-mcard:hover { transform: none; }
+.st-mcard.on { border-color: var(--vivid); box-shadow: 0 0 0 1px var(--vivid), 0 0 0 5px var(--vivid-soft); }
+.st-mcard .pv { width: 48px; height: 60px; }
+.st-mcard .nm { font-size: 12px; font-weight: 500; color: var(--text); }
+.st-mcard .sw { display: flex; gap: var(--s1); }
+.st-mcard .sw i { width: 9px; height: 9px; border-radius: 50%; box-shadow: 0 0 0 1px color-mix(in srgb, var(--text) 18%, transparent); }
+@media (prefers-reduced-motion: reduce) { .st-mcard:hover { transform: none; } }
+
+/* skins das equipes: uma linha por função; pontinho = skin em uso por outra função (clicar troca) */
+.st-team { display: flex; flex-direction: column; gap: var(--s2); padding: var(--s2) 0 var(--s3); }
+.st-trow { display: flex; align-items: center; gap: var(--s3); }
+.st-trow .pv { width: 32px; height: 40px; flex: none; }
+.st-trow b { width: 80px; flex: none; font-size: 13px; font-weight: 500; }
+.st-trow .sw { display: flex; gap: var(--s1h); flex-wrap: wrap; }
+.st-trow .sw button { position: relative; width: 18px; height: 18px; padding: 0; border-radius: 50%; border: 1px solid var(--border-strong); }
+.st-trow .sw button { transition: transform var(--t-fast) var(--ease); }
+.st-trow .sw button:hover { transform: scale(1.15); }
+.st-trow .sw button:active { transform: scale(0.95); }
+.st-trow .sw button.on { outline: 2px solid var(--vivid); outline-offset: 1px; }
+.st-trow .sw button i { position: absolute; right: -3px; top: -3px; width: 6px; height: 6px; border-radius: 50%; background: var(--text-dim); border: 1px solid var(--bg); }
+
+/* prévia do merge no settings.json (texto puro; verde entra, vermelho sai) */
+.st-diffbox { margin-top: var(--s3); display: flex; flex-direction: column; gap: var(--s2); }
+.st-diff { margin: 0; max-height: 320px; overflow: auto; padding: var(--s3); border-radius: var(--r-sm); background: var(--bg-0); border: 1px solid var(--border); font: 12px/1.45 var(--mono); white-space: pre; user-select: text; }
+.st-diff .add { color: var(--st-done); }
+.st-diff .del { color: var(--st-err); }

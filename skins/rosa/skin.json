@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "rosa",
+  "name": "Rosa",
+  "palette": {
+    "body": "#ff6fb1",
+    "shade": "#c4508c",
+    "eye": "#21161a",
+    "cheek": "#ffacde",
+    "accent": "#ffd166"
+  },
+  "flags": {
+    "outline": false,
+    "eyeGlow": false,
+    "animatedColor": false
+  }
+}

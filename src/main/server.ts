@@ -90,7 +90,7 @@ export function createEventServer(token: string, onEvent: (e: HookEvent) => void
         const ev = normalize(body)
         if (!ev) { state.rejected++; return end(400) }
         state.received++; state.lastAt = Date.now()
-        onEvent(ev)
+        try { onEvent(ev) } catch (err) { onReject?.(`evento ${ev.event} falhou: ${err instanceof Error ? err.stack ?? err.message : err}`) } // estado/notificação: falha aparece no log
         end(204)
       } catch { state.rejected++; end(400) }
     })

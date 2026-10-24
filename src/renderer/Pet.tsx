@@ -234,18 +234,19 @@ export function Pet({ snap }: { snap: AppSnapshot }) {
 }
 
 function beep(volume: number) {
-  let ctx: AudioContext | null = null
   return (kind: 'done' | 'ask' | 'error') => {
     try {
-      ctx ??= new AudioContext()
+      // contexto novo a cada som: um reaproveitado fica preso ao dispositivo de áudio antigo (troca de fone/caixa) e emudece
+      const ctx = new AudioContext()
       const notes = kind === 'done' ? [660, 880] : kind === 'ask' ? [740, 740] : [220]
       notes.forEach((f, i) => {
-        const o = ctx!.createOscillator(), g = ctx!.createGain()
+        const o = ctx.createOscillator(), g = ctx.createGain()
         o.type = 'square'; o.frequency.value = f
-        const t = ctx!.currentTime + i * 0.14
+        const t = ctx.currentTime + i * 0.14
         g.gain.setValueAtTime(0.08 * volume, t); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.12)
-        o.connect(g).connect(ctx!.destination); o.start(t); o.stop(t + 0.13)
+        o.connect(g).connect(ctx.destination); o.start(t); o.stop(t + 0.13)
       })
+      setTimeout(() => void ctx.close(), notes.length * 140 + 300)
     } catch { /* áudio indisponível */ }
   }
 }

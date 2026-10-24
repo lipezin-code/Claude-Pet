@@ -1,7 +1,7 @@
 {
   "name": "claude-pet",
   "productName": "Claude Pet",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "Pet flutuante que acompanha o Claude Code no Windows",
   "main": "out/main/index.js",
   "author": "Fellipe",
